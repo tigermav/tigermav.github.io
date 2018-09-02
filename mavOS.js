@@ -269,7 +269,8 @@ function mavOS(fp_GameScene)
   //- ********************************************************************************************************* -
   this.m_onMouseDown_bnToGameCommunity = function(fp_Object, fp_Pointer)
   {
-    document.location.href = "https://vk.com/the_suite_life_universe";
+    //document.location.href = "https://vk.com/the_suite_life_universe";
+	window.open('https://vk.com/the_suite_life_universe', '_blank');
 	//document.location.replace("https://vk.com/the_suite_life_universe");// в истории браузера не осталась запись о текущей странице
   }
   //- ********************************************************************************************************* -
