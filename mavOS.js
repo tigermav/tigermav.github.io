@@ -865,7 +865,7 @@ function mavOS(fp_GameScene)
     this.text_ToGameCommunity.group.position.y = gv_MyGame.GameHeight - lc_htext_ToGameCommunity;
     this.text_ToGameCommunity.sprite.inputEnabled = true;
     this.text_ToGameCommunity.group.onChildInputDown.add(this.m_onMouseDown_bnToGameCommunity, this.text_ToGameCommunity.group);
-	//this.text_ToGameCommunity.group.visible = false;
+	this.text_ToGameCommunity.group.visible = false;
   }
   //- ********************************************************************************************************* - m_Create_MesWin_WatchTheNewsInCommunity()
   this.m_Create_MesWin_WatchTheNewsInCommunity = function()
