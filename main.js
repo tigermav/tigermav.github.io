@@ -9,12 +9,12 @@ window.onload = function() {
 	m_FirstBootGame();
 
 };
-window.addEventListener("resize", function() {
+// window.addEventListener("resize", function() {
     
-    m_DefineGameSizeAndScale();
-	gv_MyGame.game.scale.setGameSize(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
+    // m_DefineGameSizeAndScale();
+	// gv_MyGame.game.scale.setGameSize(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
 
-}, false);
+// }, false);
 //-------------------------------------------------------------------------------------------------------------------
 function m_FirstBootGame()
 {
@@ -46,27 +46,33 @@ function m_DefineGameSizeAndScale()
 	gv_MyGame.GameWidth = window.innerWidth;
 	gv_MyGame.GameHeight = window.innerHeight;
 	
-	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
+	//alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
 	
 	// gv_scaleRatio = window.devicePixelRatio / 3;
 
-	// var gv_scaleRatio_1 = gv_MyGame.GameWidth/gv_StandartGameWidth;// 700 - ширина по умолчанию
-	// var gv_scaleRatio_2 = gv_MyGame.GameHeight/gv_StandartGameHeight;// 500 - высота по умолчанию
+	var gv_scaleRatio_1 = gv_MyGame.GameWidth/gv_StandartGameWidth;// 700 - ширина по умолчанию
+	var gv_scaleRatio_2 = gv_MyGame.GameHeight/gv_StandartGameHeight;// 500 - высота по умолчанию
 	
 	// //if((gv_MyGame.GameWidth < gv_StandartGameWidth) || (gv_MyGame.GameHeight < gv_StandartGameHeight))
 	
-	
-	// if(gv_scaleRatio_2 < gv_scaleRatio_1)
-	  // gv_scaleRatio = gv_scaleRatio_2;
-	// else
-	  // gv_scaleRatio = gv_scaleRatio_1;
+	if(gv_scaleRatio_2 < gv_scaleRatio_1)
+	  gv_scaleRatio = gv_scaleRatio_2;
+	else
+	  gv_scaleRatio = gv_scaleRatio_1;
 	
 	//if(gv_MyGame.GameWidth )
 	
+	if(gv_scaleRatio >= 1)
+	  gv_scaleRatio = 1;
+
+	gv_MyGame.GameWidth = gv_StandartGameWidth * gv_scaleRatio;
+	gv_MyGame.GameHeight = gv_StandartGameHeight * gv_scaleRatio;
 	
-	gv_MyGame.GameWidth = gv_StandartGameWidth;
-	gv_MyGame.GameHeight = gv_StandartGameHeight;
-	gv_scaleRatio = 1;
+	  //gv_MyGame.GameWidth = gv_StandartGameWidth;
+	  //gv_MyGame.GameHeight = gv_StandartGameHeight;
+	  //gv_scaleRatio = 1;
+	
+
 	  
 }
 

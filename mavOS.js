@@ -657,63 +657,46 @@ function mavOS(fp_GameScene)
   this.m_Create_mavWindow = function(fp_Visible)
   {
 	var lv_rect;
-	var lc_wwindow_mavWindow, lc_hwindow_mavWindow;
+	var lc_hwindow_mavWindow;
 	var lc_xwindow_mavWindow, lc_ywindow_mavWindow;
 	var lc_hbottomStrip;
-	var lc_wbnInfo, lc_hbnInfo, lc_xbnInfo, lc_ybnInfo;
-    var lc_wtext_Info, lc_htext_Info, lc_xtext_Info, lc_ytext_Info;
-	
-    lc_wbnInfo = this.GameScene.cache.getImage('bnInfo').width;
-    lc_hbnInfo = this.GameScene.cache.getImage('bnInfo').height;
-    lc_xbnInfo = 4;
-    lc_ybnInfo = 10;
+	var lc_xbnInfo, lc_ybnInfo;
+    var lc_xtext_Info, lc_ytext_Info;
+
+    lc_xbnInfo = 4 * gv_scaleRatio;
+    lc_ybnInfo = 10 * gv_scaleRatio;
     //
-    lc_wtext_Info = this.GameScene.cache.getImage('text_Info').width;
-    lc_htext_Info = this.GameScene.cache.getImage('text_Info').height;
-    lc_xtext_Info = lc_wbnInfo + 4;
-    lc_ytext_Info = 12;
+	lc_xtext_Info = this.GameScene.cache.getImage('bnInfo').width;//1D!
+    lc_xtext_Info = this.GameScene.cache.getImage('bnInfo').width + 4 * gv_scaleRatio;
+    lc_ytext_Info = 12 * gv_scaleRatio;
 	
-	lc_hbottomStrip = this.GameScene.cache.getImage('bottomStrip').height;
-    lc_wwindow_mavWindow = this.GameScene.cache.getImage('Window_640x480_opacity2').width;
-    lc_hwindow_mavWindow = this.GameScene.cache.getImage('Window_640x480_opacity2').height;
-    lc_xwindow_mavWindow = 1;
-    lc_ywindow_mavWindow = gv_MyGame.GameHeight - lc_hbottomStrip - lc_hwindow_mavWindow - 4;
+	lc_hbottomStrip = this.GameScene.cache.getImage('bottomStrip').height * gv_scaleRatio;
+    lc_hwindow_mavWindow = this.GameScene.cache.getImage('Window_640x480_opacity2').height * gv_scaleRatio;
+    lc_xwindow_mavWindow = 1 * gv_scaleRatio;
+    lc_ywindow_mavWindow = gv_MyGame.GameHeight - lc_hbottomStrip - lc_hwindow_mavWindow - 4 * gv_scaleRatio;
     this.window_mavWindow = {
 					         group: undefined,
-                             windowBmp: undefined,
 			                 windowSprite: undefined,
 					
 					         bnInfo: {
-                                      bmp: undefined,
-			                          group: undefined,
 			                          sprite: undefined
 					                 },
 					         text_Info: {
-                                         bmp: undefined,
 			                             sprite: undefined
 					                    }
                             };
 							
     // window_mavWindow: window
-    this.window_mavWindow.windowBmp = this.GameScene.make.bitmapData(lc_wwindow_mavWindow, lc_hwindow_mavWindow);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wwindow_mavWindow, lc_hwindow_mavWindow);
-    this.window_mavWindow.windowBmp.copyRect('Window_640x480_opacity2', lv_rect, 0, 0);
-    this.window_mavWindow.windowSprite = this.GameScene.add.sprite(0, 0, this.window_mavWindow.windowBmp);
+    this.window_mavWindow.windowSprite = this.GameScene.add.sprite(0, 0, 'Window_640x480_opacity2');
     //
     // window_mavWindow: bnInfo
-    this.window_mavWindow.bnInfo.bmp = this.GameScene.make.bitmapData(lc_wbnInfo, lc_hbnInfo);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wbnInfo, lc_hbnInfo);
-    this.window_mavWindow.bnInfo.bmp.copyRect('bnInfo', lv_rect, 0, 0);
-    this.window_mavWindow.bnInfo.sprite = this.GameScene.add.sprite(0, 0, this.window_mavWindow.bnInfo.bmp);
+    this.window_mavWindow.bnInfo.sprite = this.GameScene.add.sprite(0, 0, 'bnInfo');
     this.window_mavWindow.bnInfo.group = this.GameScene.game.add.group();
     this.window_mavWindow.bnInfo.group.add(this.window_mavWindow.bnInfo.sprite);
     this.window_mavWindow.bnInfo.group.position.x = lc_xbnInfo;
     this.window_mavWindow.bnInfo.group.position.y = lc_ybnInfo;
     //
-    this.window_mavWindow.text_Info.bmp = this.GameScene.make.bitmapData(lc_wtext_Info, lc_htext_Info);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wtext_Info, lc_htext_Info);
-    this.window_mavWindow.text_Info.bmp.copyRect('text_Info', lv_rect, 0, 0);
-    this.window_mavWindow.text_Info.sprite = this.GameScene.add.sprite(0, 0, this.window_mavWindow.text_Info.bmp);
+    this.window_mavWindow.text_Info.sprite = this.GameScene.add.sprite(0, 0, 'text_Info');
     this.window_mavWindow.text_Info.sprite.position.x = lc_xtext_Info;
     this.window_mavWindow.text_Info.sprite.position.y = lc_ytext_Info;
     //
@@ -726,7 +709,8 @@ function mavOS(fp_GameScene)
     this.window_mavWindow.group.visible = fp_Visible;
 	
 	//gv_GLOBAL_mavOS_THIS.mavOS.mavWindow_visible = true;
-  
+    //this.window_mavWindow.bnInfo.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+    this.window_mavWindow.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Destroy_mavWindow() - не работает: память не освобождается
   this.m_Destroy_mavWindow = function()
@@ -764,6 +748,11 @@ function mavOS(fp_GameScene)
   this.m_Create_wallpaper = function()
   {
     var lv_rect;
+	var lc_wwallpaper, lc_hwallpaper;
+	
+    lc_wwallpaper = this.GameScene.cache.getImage('wallpaper').width;
+    lc_hwallpaper = this.GameScene.cache.getImage('wallpaper').height;
+	
 	
 	// wallpaper
     this.wallpaper = {
@@ -771,65 +760,58 @@ function mavOS(fp_GameScene)
 					  group: undefined,
 					  sprite: undefined
                      };
-					 
+										
     // wallpaper
-    this.wallpaper.bmp = this.GameScene.make.bitmapData(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
-    lv_rect = new Phaser.Rectangle(0, 0, gv_MyGame.GameWidth, gv_MyGame.GameHeight);
+    this.wallpaper.bmp = this.GameScene.make.bitmapData(lc_wwallpaper, lc_hwallpaper);
+    lv_rect = new Phaser.Rectangle(0, 0, lc_wwallpaper, lc_hwallpaper);
     this.wallpaper.bmp.copyRect('wallpaper', lv_rect, 0, 0);
     this.wallpaper.sprite = this.GameScene.add.sprite(0, 0, this.wallpaper.bmp);
     this.wallpaper.group = this.GameScene.game.add.group();
+	
+	
     this.wallpaper.group.add(this.wallpaper.sprite);
+	
     this.wallpaper.group.position.x = 0;
     this.wallpaper.group.position.y = 0;
-					 
+	
+	this.wallpaper.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_bottomStrip()
   this.m_Create_bottomStrip = function()
   {
     var lv_rect;
-    var lc_wbottomStrip, lc_hbottomStrip;
+    var lc_hbottomStrip;
 	
 	// bottomStrip
-    lc_wbottomStrip = this.GameScene.cache.getImage('bottomStrip').width;
-    lc_hbottomStrip = this.GameScene.cache.getImage('bottomStrip').height;
+    lc_hbottomStrip = this.GameScene.cache.getImage('bottomStrip').height * gv_scaleRatio;
     this.bottomStrip = {
-                        bmp: undefined,
 					    group: undefined,
 					    sprite: undefined
                        };
     
     // bottomStrip
-    this.bottomStrip.bmp = this.GameScene.make.bitmapData(lc_wbottomStrip, lc_hbottomStrip);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wbottomStrip, lc_hbottomStrip);
-    this.bottomStrip.bmp.copyRect('bottomStrip', lv_rect, 0, 0);
-    this.bottomStrip.sprite = this.GameScene.add.sprite(0, 0, this.bottomStrip.bmp);
+    this.bottomStrip.sprite = this.GameScene.add.sprite(0, 0, 'bottomStrip');
     this.bottomStrip.group = this.GameScene.game.add.group();
     this.bottomStrip.group.add(this.bottomStrip.sprite);
     this.bottomStrip.group.position.x = 0;
     this.bottomStrip.group.position.y = gv_MyGame.GameHeight - lc_hbottomStrip;
     
-    
+    this.bottomStrip.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_logo()
   this.m_Create_logo = function()
   {
-    var lv_rect;
-	var lc_dxylogo, lc_wlogo, lc_hlogo;
+	var lc_dxylogo, lc_hlogo;
 	// logo	 
-    lc_dxylogo = 4;
-    lc_wlogo = this.GameScene.cache.getImage('logo').width;
-    lc_hlogo = this.GameScene.cache.getImage('logo').height;
+    lc_dxylogo = 4 * gv_scaleRatio;
+    lc_hlogo = this.GameScene.cache.getImage('logo').height * gv_scaleRatio;
     this.logo = {
-                 bmp: undefined,
 			     group: undefined,
 			     sprite: undefined
                 };
 				
     // logo
-    this.logo.bmp = this.GameScene.make.bitmapData(lc_wlogo, lc_hlogo);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wlogo, lc_hlogo);
-    this.logo.bmp.copyRect('logo', lv_rect, 0, 0);
-    this.logo.sprite = this.GameScene.add.sprite(0, 0, this.logo.bmp);
+    this.logo.sprite = this.GameScene.add.sprite(0, 0, 'logo');
     this.logo.group = this.GameScene.game.add.group();
     this.logo.group.add(this.logo.sprite);
     this.logo.group.position.x = lc_dxylogo;
@@ -837,6 +819,7 @@ function mavOS(fp_GameScene)
     this.logo.sprite.inputEnabled = true;
     this.logo.group.onChildInputDown.add(this.m_onMouseDown_logo, this.logo.group);
 				
+	this.logo.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_text_ToGameCommunity()
   this.m_Create_text_ToGameCommunity = function()
@@ -870,65 +853,51 @@ function mavOS(fp_GameScene)
   //- ********************************************************************************************************* - m_Create_MesWin_WatchTheNewsInCommunity()
   this.m_Create_MesWin_WatchTheNewsInCommunity = function()
   {
-	var lv_rect;
 	var lc_wMesWin_WatchTheNewsInCommunity, lc_hMesWin_WatchTheNewsInCommunity;
 	
     // MesWin_WatchTheNewsInCommunity	 
-    lc_wMesWin_WatchTheNewsInCommunity = this.GameScene.cache.getImage('MesWin_WatchTheNewsInCommunity').width;
-    lc_hMesWin_WatchTheNewsInCommunity = this.GameScene.cache.getImage('MesWin_WatchTheNewsInCommunity').height;
+    lc_wMesWin_WatchTheNewsInCommunity = this.GameScene.cache.getImage('MesWin_WatchTheNewsInCommunity').width * gv_scaleRatio;
+    lc_hMesWin_WatchTheNewsInCommunity = this.GameScene.cache.getImage('MesWin_WatchTheNewsInCommunity').height * gv_scaleRatio;
     this.MesWin_WatchTheNewsInCommunity = {
-                                           bmp: undefined,
 			                               sprite: undefined
                                           };
 	
     // MesWin_WatchTheNewsInCommunity
-	this.MesWin_WatchTheNewsInCommunity.bmp = this.GameScene.make.bitmapData(lc_wMesWin_WatchTheNewsInCommunity, lc_hMesWin_WatchTheNewsInCommunity);
-	lv_rect = new Phaser.Rectangle(0, 0, lc_wMesWin_WatchTheNewsInCommunity, lc_hMesWin_WatchTheNewsInCommunity);
-	this.MesWin_WatchTheNewsInCommunity.bmp.copyRect('MesWin_WatchTheNewsInCommunity', lv_rect, 0, 0);
-	this.MesWin_WatchTheNewsInCommunity.sprite = this.GameScene.add.sprite(0, 0, this.MesWin_WatchTheNewsInCommunity.bmp);
-	this.MesWin_WatchTheNewsInCommunity.sprite.position.x = gv_MyGame.GameWidth - lc_wMesWin_WatchTheNewsInCommunity - 4;
-	this.MesWin_WatchTheNewsInCommunity.sprite.position.y = this.bottomStrip.group.position.y - lc_hMesWin_WatchTheNewsInCommunity - 4;
+	this.MesWin_WatchTheNewsInCommunity.sprite = this.GameScene.add.sprite(0, 0, 'MesWin_WatchTheNewsInCommunity');
+	this.MesWin_WatchTheNewsInCommunity.sprite.position.x = gv_MyGame.GameWidth - lc_wMesWin_WatchTheNewsInCommunity - 4 * gv_scaleRatio;
+	this.MesWin_WatchTheNewsInCommunity.sprite.position.y = this.bottomStrip.group.position.y - lc_hMesWin_WatchTheNewsInCommunity - 4 * gv_scaleRatio;
 	
+	this.MesWin_WatchTheNewsInCommunity.sprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_folder_PuzzlesOfZack()
   this.m_Create_folder_PuzzlesOfZack = function()
   {
-	var lv_rect;
 	var lc_wfolder, lc_wfolder2, lc_hfolder, lc_dytext_folder;
-	var lc_wtext_PuzzlesOfZack, lc_htext_PuzzlesOfZack;
+	var lc_wtext_PuzzlesOfZack;
 	var lc_xfolder_PuzzlesOfZack, lc_yfolder_PuzzlesOfZack;
 	
 	
-    lc_wtext_PuzzlesOfZack = this.GameScene.cache.getImage('text_PuzzlesOfZack').width;
-    lc_htext_PuzzlesOfZack = this.GameScene.cache.getImage('text_PuzzlesOfZack').height;
+    lc_wtext_PuzzlesOfZack = this.GameScene.cache.getImage('text_PuzzlesOfZack').width * gv_scaleRatio;
 	
     // Folders
-    lc_wfolder = this.GameScene.cache.getImage('folder').width;
+    lc_wfolder = this.GameScene.cache.getImage('folder').width * gv_scaleRatio;
     lc_wfolder2 = lc_wfolder/2;
-    lc_hfolder = this.GameScene.cache.getImage('folder').height;
-    lc_dytext_folder = 5;
+    lc_hfolder = this.GameScene.cache.getImage('folder').height;// * gv_scaleRatio;
+    lc_dytext_folder = 5 * gv_scaleRatio;
     //
     // folder 'PuzzlesOfZack'
-    lc_xfolder_PuzzlesOfZack = 185;//178
-    lc_yfolder_PuzzlesOfZack = 185;//126
+    lc_xfolder_PuzzlesOfZack = 185 * gv_scaleRatio;//178
+    lc_yfolder_PuzzlesOfZack = 185 * gv_scaleRatio;//126
     this.folder_PuzzlesOfZack = {
                                  group: undefined,
-                                 folderBmp: undefined,
 			                     folderSprite: undefined,
-							     textBmp: undefined,
 							     textSprite: undefined
                                 };
 	
     // folder_PuzzlesOfZack
-    this.folder_PuzzlesOfZack.folderBmp = this.GameScene.make.bitmapData(lc_wfolder, lc_hfolder);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wfolder, lc_hfolder);
-    this.folder_PuzzlesOfZack.folderBmp.copyRect('folder', lv_rect, 0, 0);
-    this.folder_PuzzlesOfZack.folderSprite = this.GameScene.add.sprite(0, 0, this.folder_PuzzlesOfZack.folderBmp);
+    this.folder_PuzzlesOfZack.folderSprite = this.GameScene.add.sprite(0, 0, 'folder');
     //
-    this.folder_PuzzlesOfZack.textBmp = this.GameScene.make.bitmapData(lc_wtext_PuzzlesOfZack, lc_htext_PuzzlesOfZack);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wtext_PuzzlesOfZack, lc_htext_PuzzlesOfZack);
-    this.folder_PuzzlesOfZack.textBmp.copyRect('text_PuzzlesOfZack', lv_rect, 0, 0);
-    this.folder_PuzzlesOfZack.textSprite = this.GameScene.add.sprite(0, 0, this.folder_PuzzlesOfZack.textBmp);
+    this.folder_PuzzlesOfZack.textSprite = this.GameScene.add.sprite(0, 0, 'text_PuzzlesOfZack');
     //
     this.folder_PuzzlesOfZack.group = this.GameScene.game.add.group();
     this.folder_PuzzlesOfZack.group.add(this.folder_PuzzlesOfZack.folderSprite);
@@ -942,6 +911,8 @@ function mavOS(fp_GameScene)
 	this.folder_PuzzlesOfZack.textSprite.inputEnabled = true;
     this.folder_PuzzlesOfZack.group.onChildInputDown.add(this.m_onMouseDown_folder_PuzzlesOfZack, this.folder_PuzzlesOfZack.group);
 	
+	this.folder_PuzzlesOfZack.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	
   }
   //- ********************************************************************************************************* - m_Create_folder_PuzzlesOfCody()
   this.m_Create_folder_PuzzlesOfCody = function()
@@ -949,39 +920,30 @@ function mavOS(fp_GameScene)
 	var lv_rect;
 	var lc_wfolder, lc_wfolder2, lc_hfolder, lc_dytext_folder;
 	var lc_xfolder_PuzzlesOfCody, lc_yfolder_PuzzlesOfCody;
-	var lc_wtext_PuzzlesOfCody, lc_htext_PuzzlesOfCody;
+	var lc_wtext_PuzzlesOfCody;
 	
 	
-    lc_wtext_PuzzlesOfCody = this.GameScene.cache.getImage('text_PuzzlesOfCody').width;
-    lc_htext_PuzzlesOfCody = this.GameScene.cache.getImage('text_PuzzlesOfCody').height;
+    lc_wtext_PuzzlesOfCody = this.GameScene.cache.getImage('text_PuzzlesOfCody').width * gv_scaleRatio;
 	
     // Folders
-    lc_wfolder = this.GameScene.cache.getImage('folder').width;
+    lc_wfolder = this.GameScene.cache.getImage('folder').width * gv_scaleRatio;
     lc_wfolder2 = lc_wfolder/2;
     lc_hfolder = this.GameScene.cache.getImage('folder').height;
-    lc_dytext_folder = 5;
+    lc_dytext_folder = 5 * gv_scaleRatio;
 	
     // folder 'PuzzlesOfCody'
-    lc_xfolder_PuzzlesOfCody = 495;// 609
-    lc_yfolder_PuzzlesOfCody = 130;
+    lc_xfolder_PuzzlesOfCody = 495 * gv_scaleRatio;// 609
+    lc_yfolder_PuzzlesOfCody = 130 * gv_scaleRatio;
     this.folder_PuzzlesOfCody = {
                                  group: undefined,
-                                 folderBmp: undefined,
 			                     folderSprite: undefined,
-							     textBmp: undefined,
 							     textSprite: undefined
                                 };
 	
     // folder_PuzzlesOfCody
-    this.folder_PuzzlesOfCody.folderBmp = this.GameScene.make.bitmapData(lc_wfolder, lc_hfolder);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wfolder, lc_hfolder);
-    this.folder_PuzzlesOfCody.folderBmp.copyRect('folder', lv_rect, 0, 0);
-    this.folder_PuzzlesOfCody.folderSprite = this.GameScene.add.sprite(0, 0, this.folder_PuzzlesOfCody.folderBmp);
+    this.folder_PuzzlesOfCody.folderSprite = this.GameScene.add.sprite(0, 0, 'folder');
     //
-    this.folder_PuzzlesOfCody.textBmp = this.GameScene.make.bitmapData(lc_wtext_PuzzlesOfCody, lc_htext_PuzzlesOfCody);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wtext_PuzzlesOfCody, lc_htext_PuzzlesOfCody);
-    this.folder_PuzzlesOfCody.textBmp.copyRect('text_PuzzlesOfCody', lv_rect, 0, 0);
-    this.folder_PuzzlesOfCody.textSprite = this.GameScene.add.sprite(0, 0, this.folder_PuzzlesOfCody.textBmp);
+    this.folder_PuzzlesOfCody.textSprite = this.GameScene.add.sprite(0, 0, 'text_PuzzlesOfCody');
     //
     this.folder_PuzzlesOfCody.group = this.GameScene.game.add.group();
     this.folder_PuzzlesOfCody.group.add(this.folder_PuzzlesOfCody.folderSprite);
@@ -994,6 +956,8 @@ function mavOS(fp_GameScene)
     this.folder_PuzzlesOfCody.folderSprite.inputEnabled = true;
 	this.folder_PuzzlesOfCody.textSprite.inputEnabled = true;
     this.folder_PuzzlesOfCody.group.onChildInputDown.add(this.m_onMouseDown_folder_PuzzlesOfCody, this.folder_PuzzlesOfCody.group);
+	
+	this.folder_PuzzlesOfCody.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
 	
   }
   //- ********************************************************************************************************* - m_Create_window_FM()
