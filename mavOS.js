@@ -4,6 +4,9 @@ gv_GLOBAL_mavOS_THIS = null;
 gc_ImageWidth = 640;
 gc_ImageHeight = 480;
 
+gv_onMouseDown_Timer = 0;
+gc_onMouseDown_Time = 50;
+
 
 //-------------------------------------------------------------------------------------------------------------------
 gv_MyGame.mavOS = function(fp_Game)
@@ -293,21 +296,19 @@ function mavOS(fp_GameScene)
 	  }
 	}
   }
-  gv_Timer = 0;
   //- ********************************************************************************************************* -
   this.m_onMouseDown_logo = function(fp_Object, fp_Pointer)
   {
-	if(gv_Timer)
+	if(gv_onMouseDown_Timer)
 	  return;
 	
-	gv_Timer = 1;
+	gv_onMouseDown_Timer = 1;
 	
 	setTimeout( function() {
-	                          gv_Timer = 0;
+	                          gv_onMouseDown_Timer = 0;
 							  gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_mavWindow();
 	                       },
-	
-	                          50);
+	                          gc_onMouseDown_Time);
 	
 	//gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_mavWindow();
 	
@@ -372,13 +373,36 @@ function mavOS(fp_GameScene)
   //- ********************************************************************************************************* - m_onMouseDown_window_FM_bnClose()
   this.m_onMouseDown_window_FM_bnClose = function(fp_Object, fp_Pointer)
   {
-    gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM(false, gv_GLOBAL_mavOS_THIS.mavOS.window_FM.puzzleType);
+    
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+							  gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM(false, gv_GLOBAL_mavOS_THIS.mavOS.window_FM.puzzleType);
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
+	
   
   }
   //- ********************************************************************************************************* -
   this.m_onMouseDown_window_FM_imageCanvas = function(fp_Object, fp_Pointer)
   {
-    document.getElementById('id_Wait').style.display = "block";
+    
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+							  
+							  
+	document.getElementById('id_Wait').style.display = "block";
 	gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_puzzleWindow(false);
 	gv_LevelComplete = 0;
 	gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM(false, gv_GLOBAL_mavOS_THIS.mavOS.window_FM.puzzleType);
@@ -390,22 +414,64 @@ function mavOS(fp_GameScene)
 	
 	gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_puzzleWindow(true);
 	document.getElementById('id_Wait').style.display = "none";
+							  
+							  
+							  
+							  
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
+
   }
   //- ********************************************************************************************************* - m_onMouseDown_folder_PuzzlesOfZack()
   this.m_onMouseDown_folder_PuzzlesOfZack = function(fp_Object, fp_Pointer)
   {
-	gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM(true, 0);
+	
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+							  gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM(true, 0);
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
+	
     
   }
   //- ********************************************************************************************************* - m_onMouseDown_folder_PuzzlesOfCody()
   this.m_onMouseDown_folder_PuzzlesOfCody = function(fp_Object, fp_Pointer)
   {
-	gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM(true, 1);
-    
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+							  gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM(true, 1);
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
   }
   //- ********************************************************************************************************* -
   this.m_onMouseDown_window_FM_folder = function(fp_Object, fp_Pointer)
   {
+	
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+
+							  
 	var lv_rect;
 	
 	gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curFolder = fp_Object.parent.num;
@@ -419,40 +485,95 @@ function mavOS(fp_GameScene)
 	lv_rect = new Phaser.Rectangle(0, 0, gc_ImageWidth, gc_ImageHeight);
     gv_GLOBAL_mavOS_THIS.mavOS.window_FM.imageCanvas.bmp.copyRect(gv_GLOBAL_mavOS_THIS.mavOS.window_FM.puzzleType + '' + gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curFolder + '_' + gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder,
                                         	                      lv_rect, 0, 0);
+							  
+							  
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
+	
+
 	
   }
   //- ********************************************************************************************************* -
   this.m_onMouseDown_window_FM_bnUp = function(fp_Object, fp_Pointer)
   {
 
+  
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+
     gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_FM_folders(true);
     //gv_GLOBAL_mavOS_THIS.mavOS.window_FM.bnUp.group.visible = false;
 	gv_GLOBAL_mavOS_THIS.mavOS.window_FM.bnUp.sprite.alpha = 0.1;
 	gv_GLOBAL_mavOS_THIS.mavOS.window_FM.bnUp.sprite.inputEnabled = false;
+							  
+							  
+	                       },
+	                          gc_onMouseDown_Time);
+  
+  
+
   
   }
   //- ********************************************************************************************************* - m_onMouseDown_window_FM_bnPrevImage()
   this.m_onMouseDown_window_FM_bnPrevImage = function(fp_Object, fp_Pointer)
   {
-    var lv_rect;
+    
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+
+	var lv_rect;
 	gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder--;
 	if(gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder < 0)
 	  gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder = gv_GLOBAL_mavOS_THIS.mavOS.window_FM.maxImageInFolder - 1;
     lv_rect = new Phaser.Rectangle(0, 0, gc_ImageWidth, gc_ImageHeight);
     gv_GLOBAL_mavOS_THIS.mavOS.window_FM.imageCanvas.bmp.copyRect(gv_GLOBAL_mavOS_THIS.mavOS.window_FM.puzzleType + '' + gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curFolder + '_' + gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder,
                                         	                      lv_rect, 0, 0);
+							  
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
+
 	
   }
   //- ********************************************************************************************************* - m_onMouseDown_window_FM_bnNextImage()
   this.m_onMouseDown_window_FM_bnNextImage = function(fp_Object, fp_Pointer)
   {
-    var lv_rect;
+    
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+
+	var lv_rect;
 	gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder++;
 	if(gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder === gv_GLOBAL_mavOS_THIS.mavOS.window_FM.maxImageInFolder)
 	  gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder = 0;
     lv_rect = new Phaser.Rectangle(0, 0, gc_ImageWidth, gc_ImageHeight);
     gv_GLOBAL_mavOS_THIS.mavOS.window_FM.imageCanvas.bmp.copyRect(gv_GLOBAL_mavOS_THIS.mavOS.window_FM.puzzleType + '' + gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curFolder + '_' + gv_GLOBAL_mavOS_THIS.mavOS.window_FM.curImageInFolder,
                                         	                      lv_rect, 0, 0);
+							  
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
+	
+
   }
   //- ********************************************************************************************************* - m_ShowHide_window_FM_folders()
   this.m_ShowHide_window_FM_folders = function(fp_Show)
@@ -471,7 +592,20 @@ function mavOS(fp_GameScene)
   //- ********************************************************************************************************* - m_onMouseDown_window_puzzleWindow_bnClose()
   this.m_onMouseDown_window_puzzleWindow_bnClose = function(fp_Object, fp_Pointer)
   {
-    gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_puzzleWindow(false);
+    
+	
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
+							  gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_puzzleWindow(false);
+	                       },
+	                          gc_onMouseDown_Time);
+	
+	
   }
   //- ********************************************************************************************************* - m_ShowHide_window_puzzleWindow()
   this.m_ShowHide_window_puzzleWindow = function(fp_Show)
@@ -493,14 +627,38 @@ function mavOS(fp_GameScene)
   //- ********************************************************************************************************* - m_onMouseDown_window_LevelComplete_bnOk()
   this.m_onMouseDown_window_LevelComplete_bnOk = function(fp_Object, fp_Pointer)
   {
+	
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
 	gv_GLOBAL_mavOS_THIS.mavOS.window_LevelComplete.group.visible = false;
 	gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_window_puzzleWindow(false);
+	                       },
+	                          gc_onMouseDown_Time);
+	
+
   }
   //- ********************************************************************************************************* - m_onMouseDown_window_LevelComplete_bnRestartLevel()
   this.m_onMouseDown_window_LevelComplete_bnRestartLevel = function(fp_Object, fp_Pointer)
   {
+
+	
+	if(gv_onMouseDown_Timer)
+	  return;
+	
+	gv_onMouseDown_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_onMouseDown_Timer = 0;
     gv_GLOBAL_mavOS_THIS.mavOS.window_LevelComplete.group.visible = false;
 	gv_GLOBAL_mavOS_THIS.mavOS.m_onMouseDown_window_FM_imageCanvas();
+	                       },
+	                          gc_onMouseDown_Time);
+	
   }
   //- ********************************************************************************************************* - m_onMouseDown_window_SIWindow_bnMinimize()
   /*this.m_onMouseDown_window_SIWindow_bnMinimize = function(fp_Object, fp_Pointer)
