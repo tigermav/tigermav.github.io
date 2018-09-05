@@ -65,8 +65,8 @@ function m_DefineGameSizeAndScale()
 	if(gv_scaleRatio >= 1)
 	  gv_scaleRatio = 1;
 
-	gv_MyGame.GameWidth = gv_StandartGameWidth * gv_scaleRatio;
-	gv_MyGame.GameHeight = gv_StandartGameHeight * gv_scaleRatio;
+	//gv_MyGame.GameWidth = gv_StandartGameWidth * gv_scaleRatio;
+	//gv_MyGame.GameHeight = gv_StandartGameHeight * gv_scaleRatio;
 	
 	  //gv_MyGame.GameWidth = gv_StandartGameWidth;
 	  //gv_MyGame.GameHeight = gv_StandartGameHeight;
