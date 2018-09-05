@@ -1363,8 +1363,8 @@ function mavOS(fp_GameScene)
 	
     lc_wtext_LevelComplete = this.GameScene.cache.getImage('text_LevelComplete').width;
     lc_htext_LevelComplete = this.GameScene.cache.getImage('text_LevelComplete').height;
-    lc_xtext_LevelComplete = lc_wwindow_LevelComplete/2 - lc_wtext_LevelComplete/2;
-	lc_ytext_LevelComplete = 30;
+    lc_xtext_LevelComplete = (lc_wwindow_LevelComplete/2 - lc_wtext_LevelComplete/2);
+	lc_ytext_LevelComplete = 30 * gv_scaleRatio;
 	
     lc_wbnOk = this.GameScene.cache.getImage('bnOk').width;
     lc_hbnOk = this.GameScene.cache.getImage('bnOk').height;
@@ -1443,8 +1443,9 @@ function mavOS(fp_GameScene)
     this.window_LevelComplete.group.add(this.window_LevelComplete.text_LevelComplete.sprite);
     this.window_LevelComplete.group.add(this.window_LevelComplete.bnOk.group);
     this.window_LevelComplete.group.add(this.window_LevelComplete.bnRestartLevel.group);
-    this.window_LevelComplete.group.position.x = gv_MyGame.GameWidth/2 - lc_wwindow_LevelComplete/2;
-    this.window_LevelComplete.group.position.y = gv_MyGame.GameHeight/2 - lc_hwindow_LevelComplete/2;
+    this.window_LevelComplete.group.position.x = gv_MyGame.GameWidth/2 - (lc_wwindow_LevelComplete/2) * gv_scaleRatio;
+    this.window_LevelComplete.group.position.y = (lc_hwindow_LevelComplete/2) * gv_scaleRatio;
+    //this.window_LevelComplete.group.position.y = gv_MyGame.GameHeight/2 - (lc_hwindow_LevelComplete/2) * gv_scaleRatio;
     this.window_LevelComplete.group.visible = fp_Visible;
 	
 	
@@ -1803,9 +1804,38 @@ function ZackPuzzle(fp_GameScene, fp_Parent, fp_TileWidth, fp_TileHeight)
 
   }
   //- ********************************************************************************************************* -
-  this.m_MixTiles = function()
+  this.m_MixTiles = function() // m_MixTiles() - Zack
   {
-    var lv_ix, lv_iy;
+    
+	
+	var lv_k, lv_rk;
+    var lv_r;
+	var lv_px, lv_py;
+	var lv_repeat;
+	for(lv_repeat = 0; lv_repeat < 600; lv_repeat++)
+	for(lv_k = 0; lv_k < this.Tiles.length; lv_k++)
+	{
+	  lv_rk = Math.round(Math.random() * 100);
+	  if(lv_rk > (this.Tiles.length - 1))
+	  {
+	    // lv_r = (Math.random() >= 0.5)?1:0;
+		// lv_rk = 5 + lv_r;
+		lv_rk = lv_k;
+	  }
+	  
+	  this.m_onMouseDown_Tile(this.Tiles[lv_rk].sprite);
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	var lv_ix, lv_iy;
 	var lv_bix, lv_biy;
 	var lv_lx, lv_ly;
 	var lv_k;
