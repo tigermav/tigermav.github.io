@@ -569,6 +569,7 @@ function mavOS(fp_GameScene)
     this.window_puzzleWindow.bnClose.sprite.inputEnabled = true;
     this.window_puzzleWindow.bnClose.group.onChildInputDown.add(this.m_onMouseDown_window_puzzleWindow_bnClose, this.window_puzzleWindow.bnClose.group);
 	
+	this.window_puzzleWindow.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_SIWindow()
   this.m_Create_SIWindow = function(fp_Visible)
@@ -1334,6 +1335,9 @@ function mavOS(fp_GameScene)
     this.window_FM.imageCanvas.sprite.inputEnabled = true;
     this.window_FM.imageCanvas.group.onChildInputDown.add(this.m_onMouseDown_window_FM_imageCanvas, this.window_FM.imageCanvas.group);
 	
+	
+	this.window_FM.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	
   }
   //- ********************************************************************************************************* - m_Create_window_LevelComplete()
   this.m_Create_window_LevelComplete = function(fp_Visible)
@@ -1449,7 +1453,7 @@ function mavOS(fp_GameScene)
     this.window_LevelComplete.bnRestartLevel.sprite.inputEnabled = true;
     this.window_LevelComplete.bnRestartLevel.group.onChildInputDown.add(this.m_onMouseDown_window_LevelComplete_bnRestartLevel, this.window_LevelComplete.bnRestartLevel.group);
 	
-  
+    this.window_LevelComplete.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_window_DifficultyChoice()
   this.m_Create_window_DifficultyChoice = function(fp_Visible)
