@@ -21,8 +21,13 @@ function m_FirstBootGame()
 	// gv_MyGame.GameWidth = 1000;
 	// gv_MyGame.GameHeight = 800;
 	
+	alert("Hi 1");
+	
 	if((window.innerWidth === 0) || (window.innerHeight === 0))
+	{
+	  alert("Hi 2");
 	  return;
+	}
 	
     m_DefineGameSizeAndScale();
 	
