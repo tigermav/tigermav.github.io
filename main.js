@@ -21,7 +21,7 @@ function m_FirstBootGame()
 	// gv_MyGame.GameWidth = 1000;
 	// gv_MyGame.GameHeight = 800;
 	
-	alert("Hello 1");
+	alert("Hello 2");
 	
 	// alert("Hi 1");
 	
@@ -59,6 +59,7 @@ function m_DefineGameSizeAndScale()
 	
 	
 	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
+	alert("W = " + window.Width + "; H = " + window.Height);
 	
 	// gv_scaleRatio = window.devicePixelRatio / 3;
 
