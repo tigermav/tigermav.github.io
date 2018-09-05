@@ -827,7 +827,7 @@ function mavOS(fp_GameScene)
     this.logo.sprite.inputEnabled = true;
     this.logo.group.onChildInputDown.add(this.m_onMouseDown_logo, this.logo.group);
 				
-	this.logo.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	this.logo.sprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_text_ToGameCommunity()
   this.m_Create_text_ToGameCommunity = function()
