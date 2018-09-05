@@ -749,25 +749,14 @@ function mavOS(fp_GameScene)
   //- ********************************************************************************************************* - m_Create_wallpaper()
   this.m_Create_wallpaper = function()
   {
-    var lv_rect;
-	var lc_wwallpaper, lc_hwallpaper;
-	
-    lc_wwallpaper = this.GameScene.cache.getImage('wallpaper').width;
-    lc_hwallpaper = this.GameScene.cache.getImage('wallpaper').height;
-	
-	
 	// wallpaper
     this.wallpaper = {
-                      bmp: undefined,
 					  group: undefined,
 					  sprite: undefined
                      };
 										
     // wallpaper
-    this.wallpaper.bmp = this.GameScene.make.bitmapData(lc_wwallpaper, lc_hwallpaper);
-    lv_rect = new Phaser.Rectangle(0, 0, lc_wwallpaper, lc_hwallpaper);
-    this.wallpaper.bmp.copyRect('wallpaper', lv_rect, 0, 0);
-    this.wallpaper.sprite = this.GameScene.add.sprite(0, 0, this.wallpaper.bmp);
+    this.wallpaper.sprite = this.GameScene.add.sprite(0, 0, 'wallpaper');
     this.wallpaper.group = this.GameScene.game.add.group();
 	
 	
@@ -776,7 +765,21 @@ function mavOS(fp_GameScene)
     this.wallpaper.group.position.x = 0;
     this.wallpaper.group.position.y = 0;
 	
-	this.wallpaper.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	//var lv_ratio;
+	//this.wallpaper.group.scale.setTo(gv_scaleRatio / window.devicePixelRatio, gv_scaleRatio / window.devicePixelRatio);
+	//this.wallpaper.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	//lv_ratio = window.devicePixelRatio / 3;
+	//gv_scaleRatio = 0.6;
+	//gv_scaleRatio = gv_scaleRatio - gv_scaleRatio/window.devicePixelRatio;
+	//gv_scaleRatio = lv_ratio;
+	//gv_scaleRatio = gv_scaleRatio - 1/3;
+	//gv_scaleRatio = gv_scaleRatio - window.devicePixelRatio / 3;
+	//this.wallpaper.sprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	//this.wallpaper.sprite.scale.setTo(  ((640/800)*800)/800, ((360/600)*600)/600  );
+	//gv_scaleRatio = ((360/600)*600)/600;
+	//this.wallpaper.sprite.scale.setTo(  ((640/800)*800)/800, ((360/600)*600)/600  );
+	this.wallpaper.sprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	
   }
   //- ********************************************************************************************************* - m_Create_bottomStrip()
   this.m_Create_bottomStrip = function()

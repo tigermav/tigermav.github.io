@@ -62,7 +62,7 @@ function m_DefineGameSizeAndScale()
 	
 	
 	
-	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
+	//alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
 	//alert("W = " + window.Width + "; H = " + window.Height);
 	
 	// gv_scaleRatio = window.devicePixelRatio / 3;
@@ -85,14 +85,19 @@ function m_DefineGameSizeAndScale()
 	//gv_MyGame.GameWidth = gv_StandartGameWidth;// * gv_scaleRatio;
 	//gv_MyGame.GameHeight = gv_StandartGameHeight;// * gv_scaleRatio;
 	  
-	gv_MyGame.GameWidth = gv_StandartGameWidth * gv_scaleRatio;
-	gv_MyGame.GameHeight = gv_StandartGameHeight * gv_scaleRatio;
+
+	
+    //this.chibi.scale.setTo(((GAME_WIDTH/BASE_WIDTH)*BASE_CHIBI_WIDTH)/BASE_CHIBI_WIDTH, ((GAME_HEIGHT/BASE_HEIGHT)*BASE_CHIBI_HEIGHT)/BASE_CHIBI_HEIGHT);
+	
+	//gv_scaleRatio = ((window.innerHeight/gv_StandartGameHeight)*gv_StandartGameHeight)/gv_StandartGameHeight;
 	
 	  //gv_MyGame.GameWidth = gv_StandartGameWidth;
 	  //gv_MyGame.GameHeight = gv_StandartGameHeight;
 	  //gv_scaleRatio = 1;
 	
-
+	gv_MyGame.GameWidth = gv_StandartGameWidth * gv_scaleRatio;
+	gv_MyGame.GameHeight = gv_StandartGameHeight * gv_scaleRatio;
+	
 	  
 }
 
