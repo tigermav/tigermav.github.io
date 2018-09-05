@@ -526,12 +526,12 @@ function mavOS(fp_GameScene)
 										 
                                };
 		
-    lc_xwindowMask = 5;
-    lc_ywindowMask = lc_dxybnClose + lc_hbnClose + lc_xwindowMask;		
-    lc_wwindowMask = lc_wwindow_puzzleWindow - 2*lc_xwindowMask;
-    lc_hwindowMask = lc_hwindow_puzzleWindow - lc_ywindowMask - lc_xwindowMask;
+    lc_xwindowMask = 5 * gv_scaleRatio;
+    lc_ywindowMask = (lc_dxybnClose + lc_hbnClose + lc_xwindowMask) * gv_scaleRatio;		
+    lc_wwindowMask = (lc_wwindow_puzzleWindow * gv_scaleRatio - 2*lc_xwindowMask);
+    lc_hwindowMask = lc_hwindow_puzzleWindow * gv_scaleRatio - lc_ywindowMask - lc_xwindowMask;
 	//
-	gv_cScaleRatio = lc_hwindowMask/(gc_ImageHeight + 400);
+	gv_cScaleRatio = lc_hwindowMask/(gc_ImageHeight * gv_scaleRatio + 400 * gv_scaleRatio);
 	gv_CodyPuzzle_iX = 2*lc_xwindowMask;
 	gv_CodyPuzzle_iY = lc_ywindowMask + lc_xwindowMask;
 	//
@@ -555,8 +555,8 @@ function mavOS(fp_GameScene)
     this.window_puzzleWindow.bnClose.sprite = this.GameScene.add.sprite(0, 0, this.window_puzzleWindow.bnClose.bmp);
     this.window_puzzleWindow.bnClose.group = this.GameScene.game.add.group();
     this.window_puzzleWindow.bnClose.group.add(this.window_puzzleWindow.bnClose.sprite);
-    this.window_puzzleWindow.bnClose.group.position.x = lc_wwindow_puzzleWindow - lc_wbnClose - lc_dxybnClose;
-    this.window_puzzleWindow.bnClose.group.position.y = lc_dxybnClose;
+    this.window_puzzleWindow.bnClose.group.position.x = (lc_wwindow_puzzleWindow - lc_wbnClose - lc_dxybnClose) * gv_scaleRatio;
+    this.window_puzzleWindow.bnClose.group.position.y = lc_dxybnClose * gv_scaleRatio;
     //
     this.window_puzzleWindow.group = this.GameScene.game.add.group();
     this.window_puzzleWindow.group.add(this.window_puzzleWindow.windowSprite);
@@ -569,7 +569,9 @@ function mavOS(fp_GameScene)
     this.window_puzzleWindow.bnClose.sprite.inputEnabled = true;
     this.window_puzzleWindow.bnClose.group.onChildInputDown.add(this.m_onMouseDown_window_puzzleWindow_bnClose, this.window_puzzleWindow.bnClose.group);
 	
-	this.window_puzzleWindow.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	//this.window_puzzleWindow.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	this.window_puzzleWindow.windowSprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
+	this.window_puzzleWindow.bnClose.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
   //- ********************************************************************************************************* - m_Create_SIWindow()
   this.m_Create_SIWindow = function(fp_Visible)
