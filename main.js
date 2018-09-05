@@ -62,7 +62,7 @@ function m_DefineGameSizeAndScale()
 	
 	
 	
-	//alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
+	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
 	//alert("W = " + window.Width + "; H = " + window.Height);
 	
 	// gv_scaleRatio = window.devicePixelRatio / 3;
