@@ -57,13 +57,20 @@ function m_FirstBootGame()
 function m_DefineGameSizeAndScale()
 {
 	
-	gv_MyGame.GameWidth = window.innerWidth;
-	gv_MyGame.GameHeight = window.innerHeight;
+	// gv_MyGame.GameWidth = window.innerWidth;
+	// gv_MyGame.GameHeight = window.innerHeight;
 	
+	gv_MyGame.GameWidth = document.body.clientWidth;
+	gv_MyGame.GameHeight = document.body.clientHeight;
 	
-	
-	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
+	//alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
 	//alert("W = " + window.Width + "; H = " + window.Height);
+	
+	alert("iW = " + window.innerWidth + ", iH = " + window.innerHeight +
+	      "; sW = " + screen.width + ", sH = " + screen.height +
+		  "; cW = " + document.body.clientWidth + ", cH = " + document.body.clientHeight);
+	
+	
 	
 	// gv_scaleRatio = window.devicePixelRatio / 3;
 
