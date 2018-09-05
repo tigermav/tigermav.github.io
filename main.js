@@ -42,19 +42,27 @@ function m_FirstBootGame()
 //-------------------------------------------------------------------------------------------------------------------
 function m_DefineGameSizeAndScale()
 {
-	/*
+	
 	gv_MyGame.GameWidth = window.innerWidth;
 	gv_MyGame.GameHeight = window.innerHeight;
-	gv_scaleRatio = window.devicePixelRatio / 3;
-
-	var gv_scaleRatio_1 = gv_MyGame.GameWidth/gv_StandartGameWidth;// 700 - ширина по умолчанию
-	var gv_scaleRatio_2 = gv_MyGame.GameHeight/gv_StandartGameHeight;// 500 - высота по умолчанию
 	
-	if(gv_scaleRatio_2 < gv_scaleRatio_1)
-	  gv_scaleRatio = gv_scaleRatio_2;
-	else
-	  gv_scaleRatio = gv_scaleRatio_1;
-	*/
+	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
+	
+	// gv_scaleRatio = window.devicePixelRatio / 3;
+
+	// var gv_scaleRatio_1 = gv_MyGame.GameWidth/gv_StandartGameWidth;// 700 - ширина по умолчанию
+	// var gv_scaleRatio_2 = gv_MyGame.GameHeight/gv_StandartGameHeight;// 500 - высота по умолчанию
+	
+	// //if((gv_MyGame.GameWidth < gv_StandartGameWidth) || (gv_MyGame.GameHeight < gv_StandartGameHeight))
+	
+	
+	// if(gv_scaleRatio_2 < gv_scaleRatio_1)
+	  // gv_scaleRatio = gv_scaleRatio_2;
+	// else
+	  // gv_scaleRatio = gv_scaleRatio_1;
+	
+	//if(gv_MyGame.GameWidth )
+	
 	
 	gv_MyGame.GameWidth = gv_StandartGameWidth;
 	gv_MyGame.GameHeight = gv_StandartGameHeight;
