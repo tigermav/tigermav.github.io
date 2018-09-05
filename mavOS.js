@@ -5,7 +5,7 @@ gc_ImageWidth = 640;
 gc_ImageHeight = 480;
 
 gv_onMouseDown_Timer = 0;
-gc_onMouseDown_Time = 150;
+gc_onMouseDown_Time = 100;
 
 
 //-------------------------------------------------------------------------------------------------------------------
