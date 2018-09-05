@@ -6,7 +6,7 @@ var gv_StandartGameHeight = 600;
 
 window.onload = function() {
 
-	m_FirstBootGame();
+	//m_FirstBootGame();
 
 };
 // window.addEventListener("resize", function() {
@@ -21,13 +21,13 @@ function m_FirstBootGame()
 	// gv_MyGame.GameWidth = 1000;
 	// gv_MyGame.GameHeight = 800;
 	
-	alert("Hi 1");
+	// alert("Hi 1");
 	
-	if((window.innerWidth === 0) || (window.innerHeight === 0))
-	{
-	  alert("Hi 2");
-	  return;
-	}
+	// if((window.innerWidth === 0) || (window.innerHeight === 0))
+	// {
+	  // alert("Hi 2");
+	  // return;
+	// }
 	
     m_DefineGameSizeAndScale();
 	
@@ -75,11 +75,11 @@ function m_DefineGameSizeAndScale()
 	if(gv_scaleRatio >= 1)
 	  gv_scaleRatio = 1;
 
-	gv_MyGame.GameWidth = gv_StandartGameWidth;// * gv_scaleRatio;
-	gv_MyGame.GameHeight = gv_StandartGameHeight;// * gv_scaleRatio;
+	//gv_MyGame.GameWidth = gv_StandartGameWidth;// * gv_scaleRatio;
+	//gv_MyGame.GameHeight = gv_StandartGameHeight;// * gv_scaleRatio;
 	  
-	//gv_MyGame.GameWidth = gv_StandartGameWidth * gv_scaleRatio;
-	//gv_MyGame.GameHeight = gv_StandartGameHeight * gv_scaleRatio;
+	gv_MyGame.GameWidth = gv_StandartGameWidth * gv_scaleRatio;
+	gv_MyGame.GameHeight = gv_StandartGameHeight * gv_scaleRatio;
 	
 	  //gv_MyGame.GameWidth = gv_StandartGameWidth;
 	  //gv_MyGame.GameHeight = gv_StandartGameHeight;
