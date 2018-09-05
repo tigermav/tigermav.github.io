@@ -21,7 +21,7 @@ function m_FirstBootGame()
 	// gv_MyGame.GameWidth = 1000;
 	// gv_MyGame.GameHeight = 800;
 	
-	//alert("Hello 2");
+	alert("Hello 1");
 	
 	// alert("Hi 1");
 	
