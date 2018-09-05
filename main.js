@@ -21,6 +21,9 @@ function m_FirstBootGame()
 	// gv_MyGame.GameWidth = 1000;
 	// gv_MyGame.GameHeight = 800;
 	
+	if((window.innerWidth === 0) || (window.innerHeight === 0))
+	  return;
+	
     m_DefineGameSizeAndScale();
 	
 	gv_MyGame.game = new Phaser.Game(gv_MyGame.GameWidth, gv_MyGame.GameHeight, Phaser.CANVAS, '');//Phaser.AUTO
@@ -45,6 +48,8 @@ function m_DefineGameSizeAndScale()
 	
 	gv_MyGame.GameWidth = window.innerWidth;
 	gv_MyGame.GameHeight = window.innerHeight;
+	
+	
 	
 	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
 	
