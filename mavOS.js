@@ -5,7 +5,7 @@ gc_ImageWidth = 640;
 gc_ImageHeight = 480;
 
 gv_onMouseDown_Timer = 0;
-gc_onMouseDown_Time = 100;
+gc_onMouseDown_Time = 50;
 
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -1000,7 +1000,7 @@ function mavOS(fp_GameScene)
     this.logo.group.position.x = lc_dxylogo;
     this.logo.group.position.y = gv_MyGame.GameHeight - lc_hlogo - lc_dxylogo;
     this.logo.sprite.inputEnabled = true;
-    this.logo.group.onChildInputDown.add(this.m_onMouseDown_logo, this.logo.group);
+    this.logo.group.onChildInputUp.add(this.m_onMouseDown_logo, this.logo.group);
 				
 	this.logo.sprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
