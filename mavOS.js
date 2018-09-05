@@ -5,7 +5,7 @@ gc_ImageWidth = 640;
 gc_ImageHeight = 480;
 
 gv_onMouseDown_Timer = 0;
-gc_onMouseDown_Time = 100;
+gc_onMouseDown_Time = 150;
 
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -742,7 +742,7 @@ function mavOS(fp_GameScene)
     this.window_puzzleWindow.group.visible = fp_Visible;
 	
     this.window_puzzleWindow.bnClose.sprite.inputEnabled = true;
-    this.window_puzzleWindow.bnClose.group.onChildInputDown.add(this.m_onMouseDown_window_puzzleWindow_bnClose, this.window_puzzleWindow.bnClose.group);
+    this.window_puzzleWindow.bnClose.group.onChildInputUp.add(this.m_onMouseDown_window_puzzleWindow_bnClose, this.window_puzzleWindow.bnClose.group);
 	
 	//this.window_puzzleWindow.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
 	this.window_puzzleWindow.windowSprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
@@ -830,7 +830,7 @@ function mavOS(fp_GameScene)
     this.window_SIWindow.group.visible = fp_Visible;
 	
     //this.window_SIWindow.bnMinimize.sprite.inputEnabled = true;
-    //this.window_SIWindow.bnMinimize.group.onChildInputDown.add(this.m_onMouseDown_window_SIWindow_bnMinimize, this.window_SIWindow.bnMinimize.group);
+    //this.window_SIWindow.bnMinimize.group.onChildInputUp.add(this.m_onMouseDown_window_SIWindow_bnMinimize, this.window_SIWindow.bnMinimize.group);
 	
   }
   //- ********************************************************************************************************* - m_Create_mavWindow()
@@ -1030,7 +1030,7 @@ function mavOS(fp_GameScene)
     this.text_ToGameCommunity.group.position.x = gv_MyGame.GameWidth - lc_wtext_ToGameCommunity - lc_dxtext_ToGameCommunity;
     this.text_ToGameCommunity.group.position.y = gv_MyGame.GameHeight - lc_htext_ToGameCommunity;
     this.text_ToGameCommunity.sprite.inputEnabled = true;
-    this.text_ToGameCommunity.group.onChildInputDown.add(this.m_onMouseDown_bnToGameCommunity, this.text_ToGameCommunity.group);
+    this.text_ToGameCommunity.group.onChildInputUp.add(this.m_onMouseDown_bnToGameCommunity, this.text_ToGameCommunity.group);
 	this.text_ToGameCommunity.group.visible = false;
   }
   //- ********************************************************************************************************* - m_Create_MesWin_WatchTheNewsInCommunity()
@@ -1092,7 +1092,7 @@ function mavOS(fp_GameScene)
 	
     this.folder_PuzzlesOfZack.folderSprite.inputEnabled = true;
 	this.folder_PuzzlesOfZack.textSprite.inputEnabled = true;
-    this.folder_PuzzlesOfZack.group.onChildInputDown.add(this.m_onMouseDown_folder_PuzzlesOfZack, this.folder_PuzzlesOfZack.group);
+    this.folder_PuzzlesOfZack.group.onChildInputUp.add(this.m_onMouseDown_folder_PuzzlesOfZack, this.folder_PuzzlesOfZack.group);
 	
 	this.folder_PuzzlesOfZack.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
 	
@@ -1138,7 +1138,7 @@ function mavOS(fp_GameScene)
 	
     this.folder_PuzzlesOfCody.folderSprite.inputEnabled = true;
 	this.folder_PuzzlesOfCody.textSprite.inputEnabled = true;
-    this.folder_PuzzlesOfCody.group.onChildInputDown.add(this.m_onMouseDown_folder_PuzzlesOfCody, this.folder_PuzzlesOfCody.group);
+    this.folder_PuzzlesOfCody.group.onChildInputUp.add(this.m_onMouseDown_folder_PuzzlesOfCody, this.folder_PuzzlesOfCody.group);
 	
 	this.folder_PuzzlesOfCody.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
 	
@@ -1494,23 +1494,23 @@ function mavOS(fp_GameScene)
 	{
       this.window_FM.folders[lv_i].folderSprite.inputEnabled = true;
       this.window_FM.folders[lv_i].textSprite.inputEnabled = true;
-      this.window_FM.folders[lv_i].group.onChildInputDown.add(this.m_onMouseDown_window_FM_folder, this.window_FM.folders[lv_i].group);
+      this.window_FM.folders[lv_i].group.onChildInputUp.add(this.m_onMouseDown_window_FM_folder, this.window_FM.folders[lv_i].group);
 	}
 	//
     this.window_FM.bnPrevImage.sprite.inputEnabled = false;
-    this.window_FM.bnPrevImage.group.onChildInputDown.add(this.m_onMouseDown_window_FM_bnPrevImage, this.window_FM.bnPrevImage.group);
+    this.window_FM.bnPrevImage.group.onChildInputUp.add(this.m_onMouseDown_window_FM_bnPrevImage, this.window_FM.bnPrevImage.group);
 	//
     this.window_FM.bnNextImage.sprite.inputEnabled = false;
     this.window_FM.bnNextImage.group.onChildInputUp.add(this.m_onMouseDown_window_FM_bnNextImage, this.window_FM.bnNextImage.group);
 	//
     this.window_FM.bnUp.sprite.inputEnabled = false;
-    this.window_FM.bnUp.group.onChildInputDown.add(this.m_onMouseDown_window_FM_bnUp, this.window_FM.bnUp.group);
+    this.window_FM.bnUp.group.onChildInputUp.add(this.m_onMouseDown_window_FM_bnUp, this.window_FM.bnUp.group);
 	//
     this.window_FM.bnClose.sprite.inputEnabled = true;
-    this.window_FM.bnClose.group.onChildInputDown.add(this.m_onMouseDown_window_FM_bnClose, this.window_FM.bnClose.group);
+    this.window_FM.bnClose.group.onChildInputUp.add(this.m_onMouseDown_window_FM_bnClose, this.window_FM.bnClose.group);
 	//
     this.window_FM.imageCanvas.sprite.inputEnabled = true;
-    this.window_FM.imageCanvas.group.onChildInputDown.add(this.m_onMouseDown_window_FM_imageCanvas, this.window_FM.imageCanvas.group);
+    this.window_FM.imageCanvas.group.onChildInputUp.add(this.m_onMouseDown_window_FM_imageCanvas, this.window_FM.imageCanvas.group);
 	
 	
 	this.window_FM.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
@@ -1626,10 +1626,10 @@ function mavOS(fp_GameScene)
 	
 	//
     this.window_LevelComplete.bnOk.sprite.inputEnabled = true;
-    this.window_LevelComplete.bnOk.group.onChildInputDown.add(this.m_onMouseDown_window_LevelComplete_bnOk, this.window_LevelComplete.bnOk.group);
+    this.window_LevelComplete.bnOk.group.onChildInputUp.add(this.m_onMouseDown_window_LevelComplete_bnOk, this.window_LevelComplete.bnOk.group);
 	//
     this.window_LevelComplete.bnRestartLevel.sprite.inputEnabled = true;
-    this.window_LevelComplete.bnRestartLevel.group.onChildInputDown.add(this.m_onMouseDown_window_LevelComplete_bnRestartLevel, this.window_LevelComplete.bnRestartLevel.group);
+    this.window_LevelComplete.bnRestartLevel.group.onChildInputUp.add(this.m_onMouseDown_window_LevelComplete_bnRestartLevel, this.window_LevelComplete.bnRestartLevel.group);
 	
     this.window_LevelComplete.group.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
