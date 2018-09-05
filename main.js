@@ -21,7 +21,7 @@ function m_FirstBootGame()
 	// gv_MyGame.GameWidth = 1000;
 	// gv_MyGame.GameHeight = 800;
 	
-	alert("Hello 2");
+	//alert("Hello 2");
 	
 	// alert("Hi 1");
 	
@@ -35,8 +35,9 @@ function m_FirstBootGame()
 	
 	//gv_MyGame.game = new Phaser.Game(gv_MyGame.GameWidth, gv_MyGame.GameHeight, Phaser.CANVAS, '');//Phaser.AUTO
 	gv_MyGame.game = new Phaser.Game(gv_StandartGameWidth, gv_StandartGameHeight, Phaser.CANVAS, '');
-	m_DefineGameSizeAndScale();
-	gv_MyGame.game.scale.setGameSize(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
+	//m_DefineGameSizeAndScale();
+	//Phaser.game.scale.setGameSize(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
+	//gv_MyGame.game.scale.setGameSize(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
 	//var lv_game = new Phaser.Game(640, 480, Phaser.AUTO, '');
 
 	//Phaser.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -62,7 +63,7 @@ function m_DefineGameSizeAndScale()
 	
 	
 	alert("iW = " + gv_MyGame.GameWidth + "; iH = " + gv_MyGame.GameHeight);
-	alert("W = " + window.Width + "; H = " + window.Height);
+	//alert("W = " + window.Width + "; H = " + window.Height);
 	
 	// gv_scaleRatio = window.devicePixelRatio / 3;
 

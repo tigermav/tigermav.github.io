@@ -104,6 +104,8 @@ gv_MyGame.mavOS.prototype = {
 	{
       var lv_rect;
       //this.WholeImage = this.add.image(100, 100, 'wallpaper');
+	  m_DefineGameSizeAndScale();
+	  gv_MyGame.game.scale.setGameSize(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
 	  
 	  gv_GLOBAL_mavOS_THIS = this;
 	  this.mavOS = new mavOS(this);
