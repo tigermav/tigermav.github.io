@@ -31,9 +31,12 @@ function m_FirstBootGame()
 	  // return;
 	// }
 	
-    m_DefineGameSizeAndScale();
+    
 	
-	gv_MyGame.game = new Phaser.Game(gv_MyGame.GameWidth, gv_MyGame.GameHeight, Phaser.CANVAS, '');//Phaser.AUTO
+	//gv_MyGame.game = new Phaser.Game(gv_MyGame.GameWidth, gv_MyGame.GameHeight, Phaser.CANVAS, '');//Phaser.AUTO
+	gv_MyGame.game = new Phaser.Game(gv_StandartGameWidth, gv_StandartGameHeight, Phaser.CANVAS, '');
+	m_DefineGameSizeAndScale();
+	gv_MyGame.game.scale.setGameSize(gv_MyGame.GameWidth, gv_MyGame.GameHeight);
 	//var lv_game = new Phaser.Game(640, 480, Phaser.AUTO, '');
 
 	//Phaser.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
