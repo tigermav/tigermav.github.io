@@ -1326,7 +1326,7 @@ function mavOS(fp_GameScene)
     this.window_FM.bnPrevImage.group.onChildInputDown.add(this.m_onMouseDown_window_FM_bnPrevImage, this.window_FM.bnPrevImage.group);
 	//
     this.window_FM.bnNextImage.sprite.inputEnabled = false;
-    this.window_FM.bnNextImage.group.onChildInputDown.add(this.m_onMouseDown_window_FM_bnNextImage, this.window_FM.bnNextImage.group);
+    this.window_FM.bnNextImage.group.onChildInputUp.add(this.m_onMouseDown_window_FM_bnNextImage, this.window_FM.bnNextImage.group);
 	//
     this.window_FM.bnUp.sprite.inputEnabled = false;
     this.window_FM.bnUp.group.onChildInputDown.add(this.m_onMouseDown_window_FM_bnUp, this.window_FM.bnUp.group);
