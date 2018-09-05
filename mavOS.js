@@ -293,10 +293,27 @@ function mavOS(fp_GameScene)
 	  }
 	}
   }
+  gv_Timer = 0;
   //- ********************************************************************************************************* -
   this.m_onMouseDown_logo = function(fp_Object, fp_Pointer)
   {
-	gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_mavWindow();
+	if(gv_Timer)
+	  return;
+	
+	gv_Timer = 1;
+	
+	setTimeout( function() {
+	                          gv_Timer = 0;
+							  gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_mavWindow();
+	                       },
+	
+	                          100);
+	
+	//gv_GLOBAL_mavOS_THIS.mavOS.m_ShowHide_mavWindow();
+	
+	
+	
+	
 	//gv_GLOBAL_mavOS_THIS.mavOS.window_mavWindow.group.visible = !(gv_GLOBAL_mavOS_THIS.mavOS.window_mavWindow.group.visible);
   }
   //- ********************************************************************************************************* - m_ShowHide_mavWindow()
