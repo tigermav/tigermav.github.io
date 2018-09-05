@@ -825,7 +825,7 @@ function mavOS(fp_GameScene)
     this.logo.group.position.x = lc_dxylogo;
     this.logo.group.position.y = gv_MyGame.GameHeight - lc_hlogo - lc_dxylogo;
     this.logo.sprite.inputEnabled = true;
-    this.logo.group.onChildInputDown.add(this.m_onMouseDown_logo, this.logo.group);
+    this.logo.group.onChildInputUp.add(this.m_onMouseDown_logo, this.logo.group);
 				
 	this.logo.sprite.scale.setTo(gv_scaleRatio, gv_scaleRatio);
   }
